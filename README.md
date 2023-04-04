@@ -1,5 +1,5 @@
 # ahk_requests.py
-<h3>Fast, comprehensive HTTP GET request library => using python's requests library to download from APIs, or website data.</h3>
+<h3>Fast, comprehensive HTTP GET request library => using python's requests library to download from APIs, or grab website data.</h3>
 
 prase and credit to: https://github.com/TheArkive/JXON_ahk2
 
