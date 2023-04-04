@@ -1,6 +1,7 @@
 # ahk_requests.py
 <h3>Fast, comprehensive HTTP GET request library => using python's requests library to download from APIs, or website data.</h3>
 
+prase and credit to: https://github.com/TheArkive/JXON_ahk2
 
 I'm sharing a new autohotkey library that I recently created, which allows you to easily perform HTTP GET requests and get back text and JSON data. It's based on Python's requests library, which is widely recognized as one of the best HTTP libraries out there.
 
