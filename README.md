@@ -1,5 +1,5 @@
 # ahk_requests.py
-<h3>Using python's requests library to download from APIs, or website</h3>
+<h3>Fast, comprehensive HTTP GET request library => using python's requests library to download from APIs, or website data.</h3>
 
 ```autohotkey
 #Include JXON.ahk
