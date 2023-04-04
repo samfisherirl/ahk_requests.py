@@ -34,7 +34,6 @@ headers := Map("myheaderkey", "myheaderval", "myheaderkey2", "myheaderval2")
 ; headers := False => gets converted to {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
 params := Map("myparamkey", "myparamval")
 req := requests(url, headers, params)
-
 req.allowRedirect := True ;optional
 req.stream := True ;optional
 
