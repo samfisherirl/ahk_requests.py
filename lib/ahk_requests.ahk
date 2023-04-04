@@ -27,7 +27,9 @@ class requests
         this.paramVals := []
         this.headerKeys := []
         this.headerVals := []
-        this.py := A_ScriptDir "\lib\ahk_requests.exe"
+        SplitPath(A_LineFile, ,&Dir)
+        this.py := Dir "\ahk_requests.exe"
+        MsgBox(this.py)
         
         this.headers := this.headerEnum(headers)
         this.params := this.paramEnum(params)
