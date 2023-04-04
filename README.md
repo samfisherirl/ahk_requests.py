@@ -7,10 +7,10 @@ I'm sharing a new autohotkey library that I recently created, which allows you t
 
 Here are some of the key features of the library:
 
-Simple syntax: You only need to provide the URL, and the library takes care of everything else.
-JSON and text support: The library can automatically parse JSON responses and return them as objects, or return plain text.
-Error handling: The library raises exceptions for common HTTP errors, such as 404 Not Found or 500 Internal Server Error, so you can handle them gracefully in your code.
-Custom headers: You can also provide custom headers to the library, such as authentication tokens or user agents.
+Simple syntax: You only need to provide the URL, and the library takes care of everything else.<br>
+JSON and text support: The library can automatically parse JSON responses and return them as objects, or return plain text.<br>
+Error handling: The library raises exceptions for common HTTP errors, such as 404 Not Found or 500 Internal Server Error, so you can handle them gracefully in your code.<br>
+Custom headers: You can also provide custom headers to the library, such as authentication tokens or user agents.<br><br>
 Here's an example of how to use the library:
 ```autohotkey
 
