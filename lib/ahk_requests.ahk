@@ -23,6 +23,10 @@ msgbox(req.txt)
 */
 
 class requests
+/*
+; this class encompasses setting and writing parameters to a temp file locally
+; finally it runs the py exe and reads return values from the temp file
+*/
 {
     __New(url, headers := False, params := False) {
         this.url := url
@@ -32,7 +36,6 @@ class requests
         this.headerVals := []
         SplitPath(A_LineFile, ,&Dir)
         this.py := Dir "\ahk_requests.exe"
-        MsgBox(this.py)
         
         this.headers := this.headerEnum(headers)
         this.params := this.paramEnum(params)
