@@ -29,15 +29,24 @@ req.get()
 msgbox(req.jdata["origin"])
 msgbox(req.txt)
 
-; Complex
-url := "https://httpbin.org/get"
-headers := Map("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36", "myheaderkey2", "myheaderval2")
-; headers := False => gets converted to {"User-Agent":"Mozilla/5.0 (Macintosh;...
+/***************************************************************/
+/***************************************************************/
 
+; Complex airtable api example
+; https://github.com/josephbestjames/airtable.py
+
+api_key := "xxxxx"
+base_id := "yyyyy"
+table_name := "zzzzzz"
+
+url := "https://api.airtable.com/v0/" . base_id  . "/" . table_name
+headers := Map("Authorization", "Bearer " . api_key)
+; headers := False => gets converted to {"User-Agent":"Mozilla/5.0 (Macintosh;...
+params := Map("view", "Grid view")
 req := requests(url, headers, params)
 
 req.allowRedirect := True ;optional
-req.stream := True ;optional
+req.stream := False ;optional
 
 req.get()
 msgbox(req.jdata["origin"])
