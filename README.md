@@ -19,7 +19,6 @@ Here's an example of how to use the library:
 ;praise and credit to: https://github.com/TheArkive/JXON_ahk2
 
 
-
 ; Simple 
 url := "https://httpbin.org/get"
 ; see bottom for additional params
@@ -29,6 +28,7 @@ req.get()
 
 msgbox(req.jdata["origin"])
 msgbox(req.txt)
+
 
 ; Complex
 url := "https://httpbin.org/get"
