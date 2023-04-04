@@ -7,8 +7,11 @@ headers := Map("myheaderkey", "myheaderval")
 params := False
 ; see bottom for additional params- #1
 
-req := requests(url, headers, params)
- 
+req := requests(url, headers)
+
+params := Map("myparamskey", "myparamsval", "myparamskey2", "myparamsval2")
+headers := False => converted to {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+
 req.allowRedirect := True ;optional
 req.stream := True ;optional
 this.py := A_ScriptDir "\ahk_requests.exe"
@@ -21,7 +24,7 @@ msgbox(req.txt)
 
 class requests
 {
-    __New(url, headers, params) {
+    __New(url, headers := False, params := False) {
         this.url := url
         this.paramKeys := []
         this.paramVals := []
@@ -188,7 +191,8 @@ ___________________1_____________________
 other methods
  headers := False
  params := Map("myparamskey", "myparamsval", "myparamskey2", "myparamsval2")
-
+ headers := False => converted to {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+ 
  or:
  headers := False => converted to {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
  
