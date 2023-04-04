@@ -18,7 +18,6 @@ Here's an example of how to use the library:
 #Include %A_ScriptDir%\lib\ahk_requests.ahk
 ;praise and credit to: https://github.com/TheArkive/JXON_ahk2
 
-
 ; Simple 
 url := "https://httpbin.org/get"
 ; see bottom for additional params
@@ -29,12 +28,11 @@ req.get()
 msgbox(req.jdata["origin"])
 msgbox(req.txt)
 
-
 ; Complex
 url := "https://httpbin.org/get"
-headers := Map("myheaderkey", "myheaderval")
+headers := Map("myheaderkey", "myheaderval", "myheaderkey2", "myheaderval2")
+; headers := False => gets converted to {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
 params := Map("myparamkey", "myparamval")
-; see bottom for additional params- #1
 
 req := requests(url, headers, params)
 
@@ -44,6 +42,5 @@ req.stream := True ;optional
 req.get()
 msgbox(req.jdata["origin"])
 msgbox(req.txt)
-
 
 ```
