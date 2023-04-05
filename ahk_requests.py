@@ -25,19 +25,8 @@ class AHKRequest:
 
     def read_data(self):
         print(self.cwd)
-        if self.xtra.is_file():
-            with open(self.xtra, "r") as f:
-                for i in f.readlines():
-                    if "allowRedirects" in i:
-                        if "True" in i.split("==")[1]:
-                            self.redir = True
-                        elif "False" in i.split("==")[1]:
-                            self.redir = False
-                    elif "stream" in i:
-                        if "True" in i.split("==")[1]:
-                            self.stream = True
-                        elif "False" in i.split("==")[1]:
-                            self.stream = False
+        self.readfirst(self)
+        
         if self.get.is_file():
             with open(self.get, "r") as f:
                 for i in f.readlines():
@@ -53,40 +42,57 @@ class AHKRequest:
             remove(self.json)
         if self.headers == {}:
             self.headers = self.default_headers()
+    
 
 
     def default_headers(self):
         return {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
         
-        
+    def readfirst(self):
+        if self.xtra.is_file():
+            with open(self.xtra, "r") as f:
+                for i in f.readlines():
+                    if "allowRedirects" in i:
+                        self.redir = AHKRequest.splitter(i)
+                    elif "stream" in i:
+                        self.stream = AHKRequest.splitter(i)
     
+    @staticmethod
+    def splitter(i):
+        if "True" in i.split("==")[1]:
+            return True
+        elif "False" in i.split("==")[1]:
+            return False
+
         
     def download_data(self):
         if self.params == {}:
             self.params = False
-        response = get(url=self.url, headers=self.headers, params=self.params, allow_redirects=self.redir, stream=self.stream)
+        response = get(url=self.url, 
+                headers=self.headers, 
+                params=self.params, 
+                allow_redirects=self.redir, 
+                stream=self.stream
+                )
         self.responsetxt = str("".join(response.text.split("\n")))
         self.responsejson =  str(response.json())
         return
 
-    def write_data(self):        
-        with open(self.response, "w") as f:
-            f.write(self.responsetxt)
-        with open(self.json, "w") as f:
-            f.write(self.responsejson)
-        if self.get.is_file():
-            remove(self.get)
-        if self.xtra.is_file():
-            remove(self.xtra)
-        print(str(self.responsetxt))
-        print(str(self.responsejson))
+    @staticmethod
+    def write_data(file, text):        
+        with open(file, "w") as f:
+            f.write(text)
+        if file.is_file():
+            remove(file)
+        print(str(text))
         
 
 if __name__ == "__main__":
     try:
         ahk = AHKRequest()
         ahk.download_data()
-        ahk.write_data()
+        ahk.write_data(ahk.json, ahk.responsejson)
+        ahk.write_data(ahk.response, ahk.responsetxt)
     except Exception as e:
         tz = timezone('EST')
         time = str(datetime.now(tz))
